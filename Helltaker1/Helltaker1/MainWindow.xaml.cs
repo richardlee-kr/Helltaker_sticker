@@ -4,6 +4,7 @@ using System.IO;
 using System.Media;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -14,43 +15,56 @@ using WMPLib;
 
 namespace Helltaker1
 {
-    /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
-    /// </summary>
+    //To Edit
+    //controlWindow에서 캐릭터 선택하기(보류)
+    //우클릭하면 -ㅁX 나오게 하기
+    //다운로드 매니저 구현
+    
     public partial class MainWindow : Window
     {
-        Bitmap original; //표시될 bitmap
-        Bitmap[] frames = new Bitmap[24]; //애니메이션 프레임
-        Bitmap[] frames_8 = new Bitmap[8];
+        public int frame_sheet = 24;
+        int height = 100;
+        int width = 100;
 
-        ImageSource[] imgFrame = new ImageSource[24]; //이미지소스 프레임
-        ImageSource[] imgFrame_8 = new ImageSource[8];
+        Bitmap original;  //bitmap to show
+        Bitmap[] frames; //frame for animation
 
-        string bitmapPath = "Resources/Lucifer.png"; //파일 디렉토리
+        ContorlWindow control = new ContorlWindow();
 
-        int frame = -1; //프레임 
-        float speed = 3;
+        public ImageSource[] imgFrame; //frame for split sheet
+
+        string bitmapPath = "Resources/Lucifer.png"; //file directory
+
+        public int frame; //frame for animated bitmap
+        public float fps = 3 / 200f; //fps variable
+        public float speed = 3; //frame speed
+
+        private bool isShowGrip = false;
+
+
+        /*timer for frame update*/
         DispatcherTimer timer;
 
-        string[] filePaths = Directory.GetFiles("Resources", "*.png"); //파일 이름 받아오기
+        //string[] filePaths = Directory.GetFiles("Resources", "*.png"); //get file name
 
-        WindowsMediaPlayer wplayer = new WindowsMediaPlayer(); //WMP
 
         /*for release bitmap*/
         [DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool DeleteObject([In] IntPtr hObject);
 
-        private bool isShowGrip = false;
 
 
         public MainWindow()
         {
             InitializeComponent();
+            frames = new Bitmap[frame_sheet];
+            imgFrame = new ImageSource[frame_sheet];
 
+            //bitmapPath = "Resources/" + CharacterName + ".png";
 
             #region character
-            
+
             var Azazel = new System.Windows.Forms.MenuItem
             {
                 Index = 10,
@@ -122,6 +136,7 @@ namespace Helltaker1
                 Zdrada.Checked = false;
                 Glorious_left.Checked = false;
                 Glorious_right.Checked = false;
+
                 bitmapPath = "Resources/Azazel.png";
                 Animation(bitmapPath);
             };
@@ -333,8 +348,8 @@ namespace Helltaker1
                 speed3.Checked = false;
                 speed4.Checked = false;
                 speed5.Checked = false;
-                speed = 5;
-                timer.Interval = TimeSpan.FromSeconds((1/66.6f)*speed);
+                speed = 5f;
+                //timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
             };
             speed2.Click += (object o, EventArgs e) =>
             {
@@ -343,8 +358,8 @@ namespace Helltaker1
                 speed3.Checked = false;
                 speed4.Checked = false;
                 speed5.Checked = false;
-                speed = 4;
-                timer.Interval = TimeSpan.FromSeconds((1/66.6f)*speed);
+                speed = 4f;
+                //timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
             };
             speed3.Click += (object o, EventArgs e) =>
             {
@@ -353,8 +368,8 @@ namespace Helltaker1
                 speed3.Checked = true;
                 speed4.Checked = false;
                 speed5.Checked = false;
-                speed = 3;
-                timer.Interval = TimeSpan.FromSeconds((1/66.6f)*speed);
+                speed = 3f;
+               //timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
             };
             speed4.Click += (object o, EventArgs e) =>
             {
@@ -363,8 +378,8 @@ namespace Helltaker1
                 speed3.Checked = false;
                 speed4.Checked = true;
                 speed5.Checked = false;
-                speed = 2;
-                timer.Interval = TimeSpan.FromSeconds((1/66.6f)*speed);
+                speed = 2f;
+                //timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
             };
             speed5.Click += (object o, EventArgs e) =>
             {
@@ -374,32 +389,28 @@ namespace Helltaker1
                 speed4.Checked = false;
                 speed5.Checked = true;
                 speed = 1f;
-                timer.Interval = TimeSpan.FromSeconds((1/66.6f)*speed);
+                //timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
             };
             #endregion
 
 
-            Animation(bitmapPath); //지정된 디렉토리에 있는 png로 실행
+            Animation(bitmapPath); //play bitmap animation from directory
 
-            /*프레임 타이머*/
+
+            /*frame timer*/
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
+            timer.Interval = TimeSpan.FromSeconds(fps * speed);
             timer.Tick += NextFrame;
             timer.Start();
-            Play();
 
-            MouseDown += MainWindow_MouseDown; //드래그로 움직이기
-            MouseRightButtonDown += MainWindow_MouseRightClick; //우클릭 이벤트
 
-            /*mp3 player*/
-            wplayer.settings.setMode("loop", true);
-            wplayer.URL = "Resources/Helltaker.mp3";
-
+            /*mouse event*/
+            MouseDown += MainWindow_MouseDown; //drag move
+            MouseRightButtonDown += MainWindow_MouseRightClick; //right click event
 
 
             /*for notify icon*/
             var menu = new System.Windows.Forms.ContextMenu();
-
             var noti = new System.Windows.Forms.NotifyIcon
             {
                 Icon = System.Drawing.Icon.FromHandle(frames[0].GetHicon()),
@@ -407,22 +418,21 @@ namespace Helltaker1
                 Text = "HellTaker",
                 ContextMenu = menu,
             };
-            var shutdown = new System.Windows.Forms.MenuItem
+            var close = new System.Windows.Forms.MenuItem
             {
                 Index = 0,
-                Text = "끄기",
+                Text = "닫기",
 
+            };
+            var shutdown = new System.Windows.Forms.MenuItem
+            {
+                Text = "모두 종료",
             };
             var overlay = new System.Windows.Forms.MenuItem
             {
                 Index = 1,
                 Text = "오버레이",
             };
-            var bgm = new System.Windows.Forms.MenuItem
-            {
-                Index = 2,
-                Text = "브금",
-            }; bgm.Checked = true;
             var CharSelect = new System.Windows.Forms.MenuItem
             {
                 Index = 3,
@@ -434,42 +444,41 @@ namespace Helltaker1
                 Text = "프레임 속도 선택",
             };
 
+            /*reset*/
+            this.Topmost = true;
+            overlay.Checked = true;
+            Lucifer.Checked = true;
+            speed3.Checked = true;
 
-            /*끄기 버튼*/
+
+            /*close button*/
+            close.Click += (object o, EventArgs e) =>
+            {
+                //Stop();
+                this.Close();
+                noti.Dispose();
+            };
+            /*shutdonw button*/
             shutdown.Click += (object o, EventArgs e) =>
             {
-                System.Windows  .Application.Current.Shutdown();
+                Shutdown();
             };
-            /*오버레이 버튼*/
+            /*overlay button*/
             overlay.Click += (object o, EventArgs e) =>
             {
                 this.Topmost = !this.Topmost;
                 overlay.Checked = !overlay.Checked;
             };
-            /*브금 버튼*/
-            bgm.Click += (object o, EventArgs e) =>
-            {           
-                bgm.Checked = !bgm.Checked;
-                if (bgm.Checked)
-                    Play();
-                else
-                    Stop();
-            };
-            
-           /*메뉴에 추가*/
+
+
+
+            /*add to menu*/
             menu.MenuItems.Add(CharSelect);
-            menu.MenuItems.Add(overlay);
-            menu.MenuItems.Add(bgm);
             menu.MenuItems.Add(SpeedControl);
+            menu.MenuItems.Add(overlay);
+            //menu.MenuItems.Add(bgm);
+            menu.MenuItems.Add(close);
             menu.MenuItems.Add(shutdown);
-
-            /*기본 설정*/
-            overlay.Checked = true;
-            Lucifer.Checked = true;
-            speed3.Checked = true;
-            this.Topmost = true;
-
-
 
             #region Add Character in List
             CharSelect.MenuItems.Add(Azazel);
@@ -493,23 +502,21 @@ namespace Helltaker1
             SpeedControl.MenuItems.Add(speed5);
             #endregion
 
-            noti.ContextMenu = menu; //컨텍스트 메뉴에 메뉴 추가
+            noti.ContextMenu = menu; //add menu to Contextmenu
         }
 
-        /*프레임 진행*/
+        /*Frame process*/
         private void NextFrame(object sender, EventArgs e)
         {
-            frame = (frame + 1) % 24;
-            Sticker.Source = imgFrame[frame];
             ShowGrip();
-            //Console.WriteLine(bitmapPath);
         }
 
-        /*드래그 함수*/
+        /*Drag Function*/
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left) this.DragMove();
         }
+        /*Resize Function*/
         private void MainWindow_MouseRightClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Right) isShowGrip = !isShowGrip;
@@ -524,33 +531,28 @@ namespace Helltaker1
         }
 
 
-        /*음악 플레이어*/
-        private void Play()
+        public void Shutdown()
         {
-            wplayer.controls.play();
-        }
-        private void Stop()
-        {
-            wplayer.controls.stop();
+            System.Windows.Application.Current.Shutdown();
         }
 
-        /*프레임 애니메이션 실행*/
+        /*split sprites from sheet*/
         private void Animation(string _path)
         {
-            original = System.Drawing.Image.FromFile(bitmapPath) as Bitmap;
-            for (int i = 0; i < 24; i++)
+            original = System.Drawing.Image.FromFile(_path) as Bitmap;
+            for (int i = 0; i < frame_sheet; i++)
             {
-                frames[i] = new Bitmap(100, 100);
+                frames[i] = new Bitmap(width, height);
                 using (Graphics g = Graphics.FromImage(frames[i]))
                 {
-                    g.DrawImage(original, new System.Drawing.Rectangle(0, 0, 100, 100),
-                        new System.Drawing.Rectangle(i * 100, 0, 100, 100),
+                    g.DrawImage(original, new System.Drawing.Rectangle(0, 0, width, height),
+                        new System.Drawing.Rectangle(i * width, 0, width, height),
                         GraphicsUnit.Pixel);
                 }
                 var handle = frames[i].GetHbitmap();
                 try
                 {
-                    imgFrame[i] = Imaging.CreateBitmapSourceFromHBitmap(handle, 
+                    imgFrame[i] = Imaging.CreateBitmapSourceFromHBitmap(handle,
                         IntPtr.Zero,
                         Int32Rect.Empty,
                         BitmapSizeOptions.FromEmptyOptions());
@@ -561,5 +563,6 @@ namespace Helltaker1
                 }
             }
         }
+
     }
 }
