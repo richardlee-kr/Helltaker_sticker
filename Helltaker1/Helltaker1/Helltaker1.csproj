@@ -141,6 +141,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Lucifer_Apron.png" />
     <Resource Include="Resources\Pandemonica.png" />
     <Resource Include="Resources\Justice.png" />
     <Resource Include="Resources\Malina.png" />

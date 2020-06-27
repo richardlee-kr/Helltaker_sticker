@@ -19,12 +19,36 @@ namespace Helltaker1
     //controlWindow에서 캐릭터 선택하기(보류)
     //우클릭하면 -ㅁX 나오게 하기
     //다운로드 매니저 구현
-    
+
     public partial class MainWindow : Window
     {
-        public int frame_sheet = 24;
-        int height = 100;
-        int width = 100;
+        /*For Hiding From Alt + Tab*/
+        [DllImport("user32.dll")]
+        static extern int GetWindowLong(IntPtr hwnd, int index);
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
+
+        [DllImport("user32.dll")]
+        static extern bool SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int x, int y, int width, int height, uint flags);
+
+        [DllImport("user32.dll")]
+        static extern IntPtr SendMessage(IntPtr hwnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        private const int GWL_EXSTYLE = -20;
+        private const int WS_EX_DLGMODALFRAME = 0x0001;
+        private const int SWP_NOSIZE = 0x0001;
+        private const int SWP_NOMOVE = 0x0002;
+        private const int SWP_NOZORDER = 0x0004;
+        private const int SWP_FRAMECHANGED = 0x0020;
+        private const int WM_SETICON = 0x0080;
+        private const int WS_EX_TOOLWINDOW = 0x00000080;
+        /*Alt + Tab해서 안뜨는거 겁나 신기하당*/
+
+
+        public int frame_sheet = 24; //count of bitmap in sprite sheet
+        int height = 100; //height of each frame image
+        int width = 100; //width of each frame image
 
         Bitmap original;  //bitmap to show
         Bitmap[] frames; //frame for animation
@@ -61,6 +85,8 @@ namespace Helltaker1
             frames = new Bitmap[frame_sheet];
             imgFrame = new ImageSource[frame_sheet];
 
+
+
             //bitmapPath = "Resources/" + CharacterName + ".png";
 
             #region character
@@ -89,6 +115,10 @@ namespace Helltaker1
             {
                 Index = 6,
                 Text = "Lucifer",
+            };
+            var Lucifer_Apron = new System.Windows.Forms.MenuItem
+            {
+                Text = "Lucifer_Apron",
             };
             var Malina = new System.Windows.Forms.MenuItem
             {
@@ -130,6 +160,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -147,6 +178,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -164,6 +196,7 @@ namespace Helltaker1
                 Judgement.Checked = true;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -181,6 +214,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = true;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -198,6 +232,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = true;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -208,6 +243,24 @@ namespace Helltaker1
                 bitmapPath = "Resources/Lucifer.png";
                 Animation(bitmapPath);
             };
+            Lucifer_Apron.Click += (object o, EventArgs e) =>
+            {
+                Azazel.Checked = false;
+                Cerberus.Checked = false;
+                Judgement.Checked = false;
+                Justice.Checked = false;
+                Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
+                Malina.Checked = false;
+                Modeus.Checked = false;
+                Pandemonica.Checked = false;
+                Zdrada.Checked = true;
+                Glorious_left.Checked = false;
+                Glorious_right.Checked = false;
+
+                bitmapPath = "Resources/Lucifer_Apron.png";
+                Animation(bitmapPath);
+            };
             Malina.Click += (object o, EventArgs e) =>
             {
                 Azazel.Checked = false;
@@ -215,6 +268,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = true;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -232,6 +286,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = true;
                 Pandemonica.Checked = false;
@@ -249,6 +304,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = true;
@@ -266,6 +322,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -283,6 +340,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -300,6 +358,7 @@ namespace Helltaker1
                 Judgement.Checked = false;
                 Justice.Checked = false;
                 Lucifer.Checked = false;
+                Lucifer_Apron.Checked = false;
                 Malina.Checked = false;
                 Modeus.Checked = false;
                 Pandemonica.Checked = false;
@@ -369,7 +428,7 @@ namespace Helltaker1
                 speed4.Checked = false;
                 speed5.Checked = false;
                 speed = 3f;
-               //timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
+                //timer.Interval = TimeSpan.FromSeconds((1 / 66.6f) * speed);
             };
             speed4.Click += (object o, EventArgs e) =>
             {
@@ -486,6 +545,7 @@ namespace Helltaker1
             CharSelect.MenuItems.Add(Judgement);
             CharSelect.MenuItems.Add(Justice);
             CharSelect.MenuItems.Add(Lucifer);
+            CharSelect.MenuItems.Add(Lucifer_Apron);
             CharSelect.MenuItems.Add(Malina);
             CharSelect.MenuItems.Add(Modeus);
             CharSelect.MenuItems.Add(Pandemonica);
@@ -564,5 +624,20 @@ namespace Helltaker1
             }
         }
 
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+
+            IntPtr hwnd = new WindowInteropHelper(this).Handle;
+
+            int extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+            SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TOOLWINDOW);
+
+            SendMessage(hwnd, WM_SETICON, new IntPtr(1), IntPtr.Zero);
+            SendMessage(hwnd, WM_SETICON, IntPtr.Zero, IntPtr.Zero);
+
+            SetWindowPos(hwnd, IntPtr.Zero, 0, 0, 0, 0, SWP_NOMOVE |
+                SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+        }
     }
 }
