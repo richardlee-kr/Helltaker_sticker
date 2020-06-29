@@ -37,13 +37,11 @@ namespace Helltaker1
         {
             InitializeComponent();
 
-            MouseDown += ControlWidnow_MouseDown;
-            MouseLeftButtonDown += ControlWindow_LeftClick;
             MouseRightButtonDown += ControlWindow_RightClick;
             
             /*Frame Timer*/
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(fps * 3);
+            timer.Interval = TimeSpan.FromSeconds(fps);
             timer.Tick += NextFrame;
             timer.Start();
 
@@ -51,20 +49,10 @@ namespace Helltaker1
             wplayer.URL = "Resources/Helltaker.mp3";
             isPlay = false;
 
-            this.Topmost = true;
 
             wplayer.controls.stop();
         }
 
-        private void ControlWidnow_MouseDown(object o, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left) this.DragMove();
-        }
-        private void ControlWindow_LeftClick(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-                ShowWindow();
-        }
         private void ControlWindow_RightClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Right)
@@ -83,7 +71,6 @@ namespace Helltaker1
 
         private void NextFrame(object sender, EventArgs e)
         {
-            //Console.WriteLine(isPlay);
             if (this.openedWindow != null)
             {
                 frame_override = (frame_override + 1) % this.openedWindow.frame_sheet;
@@ -92,23 +79,90 @@ namespace Helltaker1
                     //windowList[i].frame = frame_override;
                     windowList[i].Sticker.Source = windowList[i].imgFrame[frame_override];
                 }
-                speed_override = this.openedWindow.speed;
 
                 //Console.WriteLine(speed_override);
             }
             timer.Interval = TimeSpan.FromSeconds(fps * speed_override);
         }
 
-        private void Slider_Speed(object sender, RoutedEventArgs e)
+        #region Character Click Event
+        private void Azazel_Click(object sender, RoutedEventArgs e)
         {
-            wplayer.settings.rate = musicSpeed.Value;
-            SpeedText.Text = musicSpeed.Value.ToString();
-            //Console.WriteLine(musicSpeed.Value);
+            ShowWindow();
+            openedWindow.Select_Azazel();
         }
+        private void Cerberus_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Cerberus();
+        }
+        private void Judgement_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Judgement();
+        }
+        private void Justice_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Justice();
+        }
+        private void Lucifer_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Lucifer();
+        }
+        private void Lucifer_Apron_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Lucifer_Apron();
+        }
+        private void Malina_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Malina();
+        }
+        private void Modeus_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Modeus();
+        }
+        private void Pandemonica_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Pandemonica();
+        }
+        private void Zdrada_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Zdrada();
+        }
+        private void Glorious_left_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Glorious_left();
+        }
+        private void Glorious_right_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Glorious_right();
+        }
+        #endregion
+        
+        /*Silder*/
         private void Slider_Volume(object sender, RoutedEventArgs e)
         {
             wplayer.settings.volume = (int)musicVolume.Value;
             VolumeText.Text = musicVolume.Value.ToString();
+        }
+        private void Slider_Speed(object sender, RoutedEventArgs e)
+        {
+            wplayer.settings.rate = musicSpeed.Value;
+            SpeedText.Text = musicSpeed.Value.ToString();
+        }
+        private void Slider_frameSpeed(object sender, RoutedEventArgs e)
+        {
+            speed_override = 6 - (int)frameSpeed.Value;
+            frameSpeedText.Text = frameSpeed.Value.ToString();
         }
 
         /*mp3 player*/

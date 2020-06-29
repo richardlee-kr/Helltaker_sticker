@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+    <ApplicationIcon>helltaker_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -141,19 +141,60 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Lucifer_Apron.png" />
-    <Resource Include="Resources\Pandemonica.png" />
-    <Resource Include="Resources\Justice.png" />
-    <Resource Include="Resources\Malina.png" />
-    <Resource Include="Resources\Modeus.png" />
-    <Resource Include="Resources\Zdrada.png" />
-    <Resource Include="Resources\Judgement.png" />
-    <Resource Include="Resources\Cerberus.png" />
-    <Resource Include="Resources\Azazel.png" />
-    <Resource Include="Resources\icon.ico" />
-    <Resource Include="Resources\Glorious_success_left.png" />
-    <Resource Include="Resources\Glorious_success_right.png" />
-    <Content Include="Resources\Helltaker.mp3" />
+    <Resource Include="Resources\helltaker_icon.ico" />
+    <Resource Include="Resources\Lucifer_Apron.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Pandemonica.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Justice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Malina.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Modeus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Zdrada.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Judgement.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Cerberus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Azazel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Glorious_success_left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Glorious_success_right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\azazel.png" />
+    <Resource Include="Resources\ButtonImages\cerberus.png" />
+    <Resource Include="Resources\ButtonImages\Glorious_success_left.png" />
+    <Resource Include="Resources\ButtonImages\Glorious_success_right.png" />
+    <Resource Include="Resources\ButtonImages\judgement.png" />
+    <Resource Include="Resources\ButtonImages\justice.png" />
+    <Resource Include="Resources\ButtonImages\lucifer.png" />
+    <Resource Include="Resources\ButtonImages\lucifer_apron.png" />
+    <Resource Include="Resources\ButtonImages\malina.png" />
+    <Resource Include="Resources\ButtonImages\modeus.png" />
+    <Resource Include="Resources\ButtonImages\pandemonica.png" />
+    <Resource Include="Resources\ButtonImages\zdrada.png" />
+    <Resource Include="Resources\background.jpg" />
+    <Resource Include="helltaker.ico" />
+    <Resource Include="helltaker1.ico" />
+    <Resource Include="helltaker2.ico" />
+    <Resource Include="helltaker_icon.ico" />
+    <Content Include="Resources\Helltaker.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

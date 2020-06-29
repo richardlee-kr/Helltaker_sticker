@@ -5,18 +5,322 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Helltaker1"
         mc:Ignorable="d"
-        Title="ContorlWindow" Height="250" Width="250"
+        Title="HellSticker" Height="500" Width="800"
         Background="Black"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
         >
     <Grid>
-        <TextBlock Text="Volume" Foreground="White"></TextBlock>
-        <TextBlock Text="22" Name="VolumeText" Foreground="LightGreen" Margin="45,0,0,0"></TextBlock>
-        <TextBlock Text="Speed" Foreground="White" Margin="0,20,0,0"></TextBlock>
-        <TextBlock Text="1.0" Name ="SpeedText" Foreground="GreenYellow" Margin="35,20,0,0"></TextBlock>
-        <Slider Name ="musicVolume" Orientation="Vertical" HorizontalAlignment="Right" Value="20" Height="150" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_Volume"></Slider>
-        <Slider Name ="musicSpeed" Orientation="Horizontal" VerticalAlignment="Bottom" Value="1" Width="200" Minimum="0.25" Maximum="2.0" IsSnapToTickEnabled="True" TickFrequency="0.25" ValueChanged="Slider_Speed"></Slider>
-        <Button Width="50" Height="50">Add</Button>
-        <!--<Ellipse Height="100" Width="100" Fill="White" Stroke="Black"/>-->
+        <Grid.Background>
+            <ImageBrush ImageSource="Resources/background.jpg" Opacity="0.6"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="233*"/>
+            <RowDefinition Height="238*"/>
+        </Grid.RowDefinitions>
+
+        <Button Name="Azazel" Width="100" Height="100" Margin="41,28,653,105" FontSize="24" Click="Azazel_Click" BorderBrush="{x:Null}" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/azazel.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="Cerberus" Width="100" Height="100" Margin="162,28,532,105" FontSize="24" Click="Cerberus_Click" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/cerberus.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="Judgement" Width="100" Height="100" Margin="282,28,412,105" FontSize="24" Click="Judgement_Click" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/judgement.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="Justice" Width="100" Height="100" Margin="404,28,290,105" FontSize="24" Click="Justice_Click" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/justice.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="Lucifer" Width="100" Height="100" Margin="528,28,166,105" FontSize="24" Click="Lucifer_Click" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/lucifer.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="Lucifer_Apron" Width="100" Height="100" Margin="648,28,46,105" FontSize="24" Click="Lucifer_Apron_Click" BorderBrush="{x:Null}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/lucifer_apron.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Malina" Height="100" Margin="42,158,636,213" FontSize="24" Click="Malina_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" Width="100">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/malina.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Modeus" Width="99" Height="100" Margin="162,158,532,213" FontSize="24" Click="Modeus_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/modeus.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Pandemonica" Width="99" Height="100" Margin="282,158,412,213" FontSize="24" Click="Pandemonica_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/pandemonica.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Zdrada" Width="99" Height="100" Margin="404,158,290,213" FontSize="24" Click="Zdrada_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/zdrada.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Glorious_left" Width="99" Height="100" Margin="528,158,166,213" FontSize="24" Click="Glorious_left_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/Glorious_success_left.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Glorious_right" Height="100" Margin="650,158,46,213" FontSize="24" Click="Glorious_right_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/Glorious_success_right.png"/>
+            </Button.Background>
+        </Button>
+
+
+
+
+        <TextBlock Text="Volume:" Foreground="White" Margin="80,70,518,128" FontSize="28" Grid.Row="1"></TextBlock>
+        <TextBlock Text="22" Name="VolumeText" Foreground="White" Margin="191,71,471,128" FontSize="28" RenderTransformOrigin="0.5,0.5" Grid.Row="1"></TextBlock>
+        <TextBlock Text="musicSpeed:" Foreground="White" Margin="80,110,476,92" FontSize="28" Grid.Row="1"></TextBlock>
+        <TextBlock Text="1.0" Name ="SpeedText" Foreground="White" Margin="246,109,413,92" FontSize="28" RenderTransformOrigin="-0.029,0.586" Grid.Row="1"></TextBlock>
+        <TextBlock Text="frameSpeed:" Foreground="White" FontSize="28" Margin="80,151,476,45" Grid.Row="1"></TextBlock>
+        <TextBlock Text="3" Name ="frameSpeedText" Foreground="White" Margin="246,151,413,51" FontSize="28" Grid.Row="1"></TextBlock>
+
+
+        <Slider Name ="musicVolume" Value="40" Width="300" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_Volume" Margin="399,75,95,143" Height="20" Grid.Row="1">
+            <Slider.Effect>
+                <DropShadowEffect Color="#FF040404" Opacity="0"/>
+            </Slider.Effect>
+        </Slider>
+        <Slider Name ="musicSpeed" Value="1" Width="300" Minimum="0.25" Maximum="2.0" IsSnapToTickEnabled="True" TickFrequency="0.25" ValueChanged="Slider_Speed" Height="20" Margin="399,120,95,98" Grid.Row="1">
+            <Slider.Effect>
+                <DropShadowEffect Color="#FF040404" Opacity="0"/>
+            </Slider.Effect>
+        </Slider>
+        <Slider Name ="frameSpeed" Value="3" Width="300" Minimum="1" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_frameSpeed" Height="20" Margin="399,161,95,57" Grid.Row="1">
+            <Slider.Effect>
+                <DropShadowEffect Color="#FF040404" Opacity="0"/>
+            </Slider.Effect>
+        </Slider>
+
     </Grid>
 </Window>
