@@ -24,6 +24,8 @@ namespace Helltaker1
 
         private bool isPlay;
 
+        System.Windows.Forms.NotifyIcon noti;
+
         List<MainWindow> windowList = new List<MainWindow>();
 
         WindowsMediaPlayer wplayer = new WindowsMediaPlayer(); //WMP
@@ -49,8 +51,37 @@ namespace Helltaker1
             wplayer.URL = "Resources/Helltaker.mp3";
             isPlay = false;
 
+            var menu = new System.Windows.Forms.ContextMenu();
+            noti = new System.Windows.Forms.NotifyIcon
+            {
+                Icon = new System.Drawing.Icon(@"Resources/helltaker_icon.ico"),
+                Visible = true,
+                Text = "HellTaker_Settings",
+                ContextMenu = menu,
+            };
+            var shutdown = new System.Windows.Forms.MenuItem
+            {
+                Text = "shutdown",
+            };
+
+            shutdown.Click += (object o, EventArgs e) =>
+            {
+                Shutdown();
+            };
+
+            noti.Click += (object sender, EventArgs e) =>
+            {
+                this.Show();
+            };
+
+
+
 
             wplayer.controls.stop();
+
+            menu.MenuItems.Add(shutdown);
+
+            noti.ContextMenu = menu;
         }
 
         private void ControlWindow_RightClick(object sender, MouseButtonEventArgs e)
@@ -62,11 +93,25 @@ namespace Helltaker1
             }
         }
 
-       private void ShowWindow()
+
+        private void ShowWindow()
         {
             openedWindow = new MainWindow();
             openedWindow.Show();
             windowList.Add(openedWindow);
+        }
+
+        private void Shutdown()
+        {
+            if(openedWindow != null)
+            {
+                for (int i = 0; i < windowList.Count; i++)
+                {
+                    windowList[i].noti.Dispose();
+                }
+            }
+            this.noti.Dispose();
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void NextFrame(object sender, EventArgs e)
@@ -82,7 +127,7 @@ namespace Helltaker1
 
                 //Console.WriteLine(speed_override);
             }
-            timer.Interval = TimeSpan.FromSeconds(fps * speed_override);
+            timer.Interval = TimeSpan.FromSeconds(1/speed_override);
         }
 
         #region Character Click Event
@@ -146,6 +191,12 @@ namespace Helltaker1
             ShowWindow();
             openedWindow.Select_Glorious_right();
         }
+        private void Bellzebub_Easter_Egg_Click(object sender, RoutedEventArgs e)
+        {
+            ShowWindow();
+            openedWindow.Select_Bellzebub();
+        }
+
         #endregion
         
         /*Silder*/
@@ -161,7 +212,7 @@ namespace Helltaker1
         }
         private void Slider_frameSpeed(object sender, RoutedEventArgs e)
         {
-            speed_override = 6 - (int)frameSpeed.Value;
+            speed_override = (int)frameSpeed.Value;
             frameSpeedText.Text = frameSpeed.Value.ToString();
         }
 
@@ -181,5 +232,22 @@ namespace Helltaker1
         {
             wplayer.controls.pause();
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+            return;
+        }
+
+        private void FrameSpeedText_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                //Console.WriteLine("엔터");
+                frameSpeed.Value = float.Parse(frameSpeedText.Text);
+            }
+        }
+
     }
 }

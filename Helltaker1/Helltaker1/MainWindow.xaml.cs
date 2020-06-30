@@ -57,7 +57,7 @@ namespace Helltaker1
         Bitmap original;  //bitmap to show
         public Bitmap[] frames; //frame for animation
 
-        ContorlWindow control = new ContorlWindow();
+        //ContorlWindow control = new ContorlWindow();
 
         public ImageSource[] imgFrame; //frame for split sheet
 
@@ -291,7 +291,7 @@ namespace Helltaker1
             //menu.MenuItems.Add(SpeedControl);
             menu.MenuItems.Add(overlay);
             menu.MenuItems.Add(close);
-            menu.MenuItems.Add(shutdown);
+            //menu.MenuItems.Add(shutdown);
 
             #region Add Character in List
             CharSelect.MenuItems.Add(Azazel);
@@ -506,7 +506,7 @@ namespace Helltaker1
             Glorious_left.Checked = false;
             Glorious_right.Checked = false;
 
-            bitmapPath = "Resources/Lucifer_Apron.png";
+            bitmapPath = "Resources/Apron.png";
             Animation(bitmapPath);
             noti.Icon = System.Drawing.Icon.FromHandle(frames[0].GetHicon());
         }
@@ -623,6 +623,27 @@ namespace Helltaker1
             bitmapPath = "Resources/Glorious_success_right.png";
             Animation(bitmapPath);
             noti.Icon = System.Drawing.Icon.FromHandle(frames[0].GetHicon());
+        }
+        public void Select_Bellzebub()
+        {
+            Azazel.Checked = false;
+            Cerberus.Checked = false;
+            Judgement.Checked = false;
+            Justice.Checked = false;
+            Lucifer.Checked = false;
+            Lucifer_Apron.Checked = false;
+            Malina.Checked = false;
+            Modeus.Checked = false;
+            Pandemonica.Checked = false;
+            Zdrada.Checked = false;
+            Glorious_left.Checked = false;
+            Glorious_right.Checked = false;
+
+
+            bitmapPath = "Resources/Bellzebub.png";
+            Animation(bitmapPath);
+            noti.Icon = System.Drawing.Icon.FromHandle(frames[0].GetHicon());
+
         }
         #endregion
 

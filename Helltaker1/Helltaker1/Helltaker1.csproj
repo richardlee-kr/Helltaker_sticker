@@ -142,9 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\helltaker_icon.ico" />
-    <Resource Include="Resources\Lucifer_Apron.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Pandemonica.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -192,6 +189,8 @@
     <Resource Include="helltaker1.ico" />
     <Resource Include="helltaker2.ico" />
     <Resource Include="helltaker_icon.ico" />
+    <Resource Include="Resources\Apron.png" />
+    <Resource Include="Resources\Bellzebub.png" />
     <Content Include="Resources\Helltaker.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

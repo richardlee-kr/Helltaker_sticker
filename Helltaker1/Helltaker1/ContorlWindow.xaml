@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="HellSticker" Height="500" Width="800"
         Background="Black"
-        ResizeMode="CanMinimize"
+        ResizeMode="CanMinimize" Closing="Window_Closing"
         >
     <Grid>
         <Grid.Background>
@@ -294,7 +294,26 @@
                 <ImageBrush ImageSource="Resources/ButtonImages/Glorious_success_right.png"/>
             </Button.Background>
         </Button>
-
+        <Button x:Name="Bellzebub_Easter_Egg" Background="#FF2B111C" BorderBrush="{x:Null}" Margin="391,198,391,29" Grid.Row="1" Click="Bellzebub_Easter_Egg_Click">
+            <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="Button.Background" Value="Black"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+        </Button>
 
 
 
@@ -303,7 +322,7 @@
         <TextBlock Text="musicSpeed:" Foreground="White" Margin="80,110,476,92" FontSize="28" Grid.Row="1"></TextBlock>
         <TextBlock Text="1.0" Name ="SpeedText" Foreground="White" Margin="246,109,413,92" FontSize="28" RenderTransformOrigin="-0.029,0.586" Grid.Row="1"></TextBlock>
         <TextBlock Text="frameSpeed:" Foreground="White" FontSize="28" Margin="80,151,476,45" Grid.Row="1"></TextBlock>
-        <TextBlock Text="3" Name ="frameSpeedText" Foreground="White" Margin="246,151,413,51" FontSize="28" Grid.Row="1"></TextBlock>
+        <TextBox Text="33.3" Name ="frameSpeedText" Foreground="White" Margin="246,151,476,51" FontSize="28" Grid.Row="1" Background="{x:Null}" KeyDown="FrameSpeedText_KeyDown" SelectionBrush="{x:Null}" BorderBrush="Transparent"></TextBox>
 
 
         <Slider Name ="musicVolume" Value="40" Width="300" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_Volume" Margin="399,75,95,143" Height="20" Grid.Row="1">
@@ -316,7 +335,7 @@
                 <DropShadowEffect Color="#FF040404" Opacity="0"/>
             </Slider.Effect>
         </Slider>
-        <Slider Name ="frameSpeed" Value="3" Width="300" Minimum="1" Maximum="5" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_frameSpeed" Height="20" Margin="399,161,95,57" Grid.Row="1">
+        <Slider Name ="frameSpeed" Value="33.3" Width="300" Minimum="10" Maximum="120" IsSnapToTickEnabled="True" TickFrequency="0.1" ValueChanged="Slider_frameSpeed" Height="20" Margin="399,161,95,57" Grid.Row="1">
             <Slider.Effect>
                 <DropShadowEffect Color="#FF040404" Opacity="0"/>
             </Slider.Effect>
