@@ -40,4 +40,3 @@ C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Hellt
 C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\obj\Release\Helltaker1.pdb
 C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\obj\Release\ContorlWindow.g.cs
 C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\obj\Release\ContorlWindow.baml
-C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\bin\Release\Resources\Helltaker.mp3

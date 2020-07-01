@@ -18,7 +18,6 @@ C:\Users\이시현\source\repos\Helltaker1\Helltaker1\obj\Debug\Helltaker1.cspro
 C:\Users\이시현\source\repos\Helltaker1\Helltaker1\obj\Debug\Helltaker1.csproj.CoreCompileInputs.cache
 C:\Users\이시현\source\repos\Helltaker1\Helltaker1\obj\Debug\Helltaker1.exe
 C:\Users\이시현\source\repos\Helltaker1\Helltaker1\obj\Debug\Helltaker1.pdb
-C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\bin\Debug\Resources\Helltaker.mp3
 C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\bin\Debug\Resources\Lucifer.png
 C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\bin\Debug\Helltaker1.exe.config
 C:\Users\이시현\source\repos\richardlee-kr\Helltaker_sticker\Helltaker1\Helltaker1\bin\Debug\Helltaker1.exe

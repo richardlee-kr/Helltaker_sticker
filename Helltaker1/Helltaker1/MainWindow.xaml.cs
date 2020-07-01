@@ -22,6 +22,7 @@ namespace Helltaker1
 
     public partial class MainWindow : Window
     {
+        #region
         /*For Hiding From Alt + Tab*/
         [DllImport("user32.dll")]
         static extern int GetWindowLong(IntPtr hwnd, int index);
@@ -44,7 +45,7 @@ namespace Helltaker1
         private const int WM_SETICON = 0x0080;
         private const int WS_EX_TOOLWINDOW = 0x00000080;
         /*Alt + Tab해서 안뜨는거 겁나 신기하당*/
-
+        #endregion
 
         System.Windows.Forms.MenuItem Azazel, Cerberus, Glorious_left, Glorious_right, Judgement, Justice, Lucifer, Lucifer_Apron, Malina, Modeus, Pandemonica, Zdrada;
         System.Windows.Forms.MenuItem speed1, speed2, speed3, speed4, speed5;
@@ -63,9 +64,9 @@ namespace Helltaker1
 
         string bitmapPath = "Resources/Lucifer.png"; //file directory
 
-        public int frame; //frame for animated bitmap
+        //public int frame; //frame for animated bitmap
         public float fps = 3 / 200f; //fps variable
-        public float speed; //frame speed
+        //public float speed; //frame speed
 
         private bool isShowGrip = false;
 
@@ -220,6 +221,7 @@ namespace Helltaker1
 
             /*mouse event*/
             MouseDown += MainWindow_MouseDown; //drag move
+            MouseDoubleClick += MainWindow_MouseDoubleClcik;
             MouseRightButtonDown += MainWindow_MouseRightClick; //right click event
 
 
@@ -269,8 +271,7 @@ namespace Helltaker1
             close.Click += (object o, EventArgs e) =>
             {
                 //Stop();
-                this.Close();
-                noti.Dispose();
+                WindowClose();
             };
             /*shutdonw button*/
             shutdown.Click += (object o, EventArgs e) =>
@@ -319,6 +320,11 @@ namespace Helltaker1
             noti.ContextMenu = menu; //add menu to Contextmenu
         }
 
+        private void MainWindow_MouseDoubleClcik(object sender, MouseButtonEventArgs e)
+        {
+            WindowClose();
+        }
+
         /*Frame process*/
         private void NextFrame(object sender, EventArgs e)
         {
@@ -334,6 +340,12 @@ namespace Helltaker1
         private void MainWindow_MouseRightClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Right) isShowGrip = !isShowGrip;
+        }
+
+        private void WindowClose()
+        {
+            this.Close();
+            noti.Dispose();
         }
 
         private void ShowGrip()

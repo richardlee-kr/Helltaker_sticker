@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="HellSticker" Height="500" Width="800"
         Background="Black"
-        ResizeMode="CanMinimize" Closing="Window_Closing"
+        ResizeMode="CanMinimize"
+        Closing="Window_Closing"
         >
     <Grid>
         <Grid.Background>
@@ -18,7 +19,8 @@
             <RowDefinition Height="238*"/>
         </Grid.RowDefinitions>
 
-        <Button Name="Azazel" Width="100" Height="100" Margin="41,28,653,105" FontSize="24" Click="Azazel_Click" BorderBrush="{x:Null}" >
+
+        <Button Name="Azazel" Width="100" Height="100" Margin="41,28,653,105" FontSize="24" Click="Azazel_Click" BorderBrush="{x:Null}" MouseEnter="Azazel_MouseEnter" MouseLeave="Azazel_MouseLeave" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -38,10 +40,33 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/azazel.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/azazel.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button Name="Cerberus" Width="100" Height="100" Margin="162,28,532,105" FontSize="24" Click="Cerberus_Click" BorderBrush="{x:Null}">
+        <Button Name="Cerberus" Width="100" Height="100" Margin="162,28,532,105" FontSize="24" Click="Cerberus_Click" BorderBrush="{x:Null}" MouseEnter="Cerberus_MouseEnter" MouseLeave="Cerberus_MouseLeave">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/ButtonImages/cerberus.png" Opacity="0"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter Property="Button.Background" Value="Black"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Name="Judgement" Width="100" Height="100" Margin="282,28,412,105" FontSize="24" Click="Judgement_Click" BorderBrush="{x:Null}" MouseEnter="Judgement_MouseEnter" MouseLeave="Judgement_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -61,10 +86,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/cerberus.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/judgement.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button Name="Judgement" Width="100" Height="100" Margin="282,28,412,105" FontSize="24" Click="Judgement_Click" BorderBrush="{x:Null}">
+        <Button Name="Justice" Width="100" Height="100" Margin="404,28,290,105" FontSize="24" Click="Justice_Click" BorderBrush="{x:Null}" MouseEnter="Justice_MouseEnter" MouseLeave="Justice_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -84,10 +109,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/judgement.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/justice.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button Name="Justice" Width="100" Height="100" Margin="404,28,290,105" FontSize="24" Click="Justice_Click" BorderBrush="{x:Null}">
+        <Button Name="Lucifer" Width="100" Height="100" Margin="528,28,166,105" FontSize="24" Click="Lucifer_Click" BorderBrush="{x:Null}" MouseEnter="Lucifer_MouseEnter" MouseLeave="Lucifer_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -107,10 +132,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/justice.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/lucifer.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button Name="Lucifer" Width="100" Height="100" Margin="528,28,166,105" FontSize="24" Click="Lucifer_Click" BorderBrush="{x:Null}">
+        <Button Name="Lucifer_Apron" Width="100" Height="100" Margin="648,28,46,105" FontSize="24" Click="Lucifer_Apron_Click" BorderBrush="{x:Null}" MouseEnter="Lucifer_Apron_MouseEnter" MouseLeave="Lucifer_Apron_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -130,10 +155,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/lucifer.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/lucifer_apron.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button Name="Lucifer_Apron" Width="100" Height="100" Margin="648,28,46,105" FontSize="24" Click="Lucifer_Apron_Click" BorderBrush="{x:Null}">
+        <Button x:Name="Malina" Height="100" Margin="42,158,636,213" FontSize="24" Click="Malina_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" Width="100" MouseEnter="Malina_MouseEnter" MouseLeave="Malina_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -153,10 +178,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/lucifer_apron.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/malina.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Malina" Height="100" Margin="42,158,636,213" FontSize="24" Click="Malina_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" Width="100">
+        <Button x:Name="Modeus" Width="99" Height="100" Margin="162,158,532,213" FontSize="24" Click="Modeus_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" MouseEnter="Modeus_MouseEnter" MouseLeave="Modeus_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -176,10 +201,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/malina.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/modeus.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Modeus" Width="99" Height="100" Margin="162,158,532,213" FontSize="24" Click="Modeus_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+        <Button x:Name="Pandemonica" Width="99" Height="100" Margin="282,158,412,213" FontSize="24" Click="Pandemonica_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" MouseEnter="Pandemonica_MouseEnter" MouseLeave="Pandemonica_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -199,10 +224,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/modeus.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/pandemonica.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Pandemonica" Width="99" Height="100" Margin="282,158,412,213" FontSize="24" Click="Pandemonica_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+        <Button x:Name="Zdrada" Width="99" Height="100" Margin="404,158,290,213" FontSize="24" Click="Zdrada_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" MouseEnter="Zdrada_MouseEnter" MouseLeave="Zdrada_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -222,10 +247,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/pandemonica.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/zdrada.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Zdrada" Width="99" Height="100" Margin="404,158,290,213" FontSize="24" Click="Zdrada_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+        <Button x:Name="Glorious_left" Width="99" Height="100" Margin="528,158,166,213" FontSize="24" Click="Glorious_left_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" MouseEnter="Glorious_left_MouseEnter" MouseLeave="Glorious_left_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -245,10 +270,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/zdrada.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/Glorious_success_left.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Glorious_left" Width="99" Height="100" Margin="528,158,166,213" FontSize="24" Click="Glorious_left_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+        <Button x:Name="Glorious_right" Height="100" Margin="650,158,46,213" FontSize="24" Click="Glorious_right_Click" BorderBrush="{x:Null}" Grid.RowSpan="2" MouseEnter="Glorious_right_MouseEnter" MouseLeave="Glorious_right_MouseLeave">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -268,10 +293,10 @@
                 </Style>
             </Button.Style>
             <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/Glorious_success_left.png"/>
+                <ImageBrush ImageSource="Resources/ButtonImages/Glorious_success_right.png" Opacity="0"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Glorious_right" Height="100" Margin="650,158,46,213" FontSize="24" Click="Glorious_right_Click" BorderBrush="{x:Null}" Grid.RowSpan="2">
+        <Button x:Name="Bellzebub_Easter_Egg" Background="#FF791F2E" BorderBrush="{x:Null}" Margin="391,178,391,49" Grid.Row="1" Click="Bellzebub_Easter_Egg_Click">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Template">
@@ -290,52 +315,88 @@
                     </Style.Triggers>
                 </Style>
             </Button.Style>
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/ButtonImages/Glorious_success_right.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="Bellzebub_Easter_Egg" Background="#FF2B111C" BorderBrush="{x:Null}" Margin="391,198,391,29" Grid.Row="1" Click="Bellzebub_Easter_Egg_Click">
-            <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="Button.IsMouseOver" Value="True">
-                                <Setter Property="Button.Background" Value="Black"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
         </Button>
 
+        <Image x:Name="Azazel_Image" Width="100" Height="100" Margin="41,28,653,105" IsHitTestVisible="False">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/azazel.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Cerberus_Image" Width="100" Height="100" Margin="162,28,532,105" IsHitTestVisible="False">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/cerberus.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Judgement_Image" Width="100" Height="100" Margin="282,28,412,105" IsHitTestVisible="False">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/judgement.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Justice_Image" Width="100" Height="100" Margin="404,28,290,105" IsHitTestVisible="False">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/justice.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Lucifer_Image" Width="100" Height="100" Margin="528,28,166,105" IsHitTestVisible="False">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/lucifer.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Lucifer_Apron_Image" Width="100" Height="100" Margin="650,28,44,105" IsHitTestVisible="False">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/lucifer_apron.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Malina_Image" Width="100" Height="100" Margin="50,158,644,213" IsHitTestVisible="False" Grid.RowSpan="2">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/malina.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Modeus_Image" Width="100" Height="100" Margin="164,158,530,213" IsHitTestVisible="False" Grid.RowSpan="2">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/modeus.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Pandemonica_Image" Width="100" Height="100" Margin="282,158,412,213" IsHitTestVisible="False" Grid.RowSpan="2">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/pandemonica.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="Zdrada_Image" Width="100" Height="100" Margin="404,158,290,213" IsHitTestVisible="False" Grid.RowSpan="2">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/zdrada.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="left_Image" Width="100" Height="100" Margin="528,158,166,213" IsHitTestVisible="False" Grid.RowSpan="2">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/Glorious_success_left.png</ImageSource>
+            </Image.Source>
+        </Image>
+        <Image x:Name="right_Image" Width="100" Height="100" Margin="650,158,44,213" IsHitTestVisible="False" Grid.RowSpan="2">
+            <Image.Source>
+                <ImageSource>Resources/ButtonImages/Glorious_success_right.png</ImageSource>
+            </Image.Source>
+        </Image>
+
+        <TextBlock Text="Volume:" Foreground="White" Margin="85,22,513,176" FontSize="28" Grid.Row="1"></TextBlock>
+        <TextBlock Text="22" Name="VolumeText" Foreground="White" Margin="196,23,466,176" FontSize="28" RenderTransformOrigin="0.5,0.5" Grid.Row="1"></TextBlock>
+        <TextBlock Text="musicSpeed:" Foreground="White" Margin="85,62,471,140" FontSize="28" Grid.Row="1"></TextBlock>
+        <TextBlock Text="1.0" Name ="SpeedText" Foreground="White" Margin="251,61,408,140" FontSize="28" RenderTransformOrigin="-0.029,0.586" Grid.Row="1"></TextBlock>
+        <TextBlock Text="frameSpeed:" Foreground="White" FontSize="28" Margin="85,103,471,93" Grid.Row="1"></TextBlock>
+        <TextBox Text="33.3" Name ="frameSpeedText" Foreground="White" Margin="251,103,471,99" FontSize="28" Grid.Row="1" Background="{x:Null}" KeyDown="FrameSpeedText_KeyDown" SelectionBrush="{x:Null}" BorderBrush="Transparent"></TextBox>
 
 
-        <TextBlock Text="Volume:" Foreground="White" Margin="80,70,518,128" FontSize="28" Grid.Row="1"></TextBlock>
-        <TextBlock Text="22" Name="VolumeText" Foreground="White" Margin="191,71,471,128" FontSize="28" RenderTransformOrigin="0.5,0.5" Grid.Row="1"></TextBlock>
-        <TextBlock Text="musicSpeed:" Foreground="White" Margin="80,110,476,92" FontSize="28" Grid.Row="1"></TextBlock>
-        <TextBlock Text="1.0" Name ="SpeedText" Foreground="White" Margin="246,109,413,92" FontSize="28" RenderTransformOrigin="-0.029,0.586" Grid.Row="1"></TextBlock>
-        <TextBlock Text="frameSpeed:" Foreground="White" FontSize="28" Margin="80,151,476,45" Grid.Row="1"></TextBlock>
-        <TextBox Text="33.3" Name ="frameSpeedText" Foreground="White" Margin="246,151,476,51" FontSize="28" Grid.Row="1" Background="{x:Null}" KeyDown="FrameSpeedText_KeyDown" SelectionBrush="{x:Null}" BorderBrush="Transparent"></TextBox>
-
-
-        <Slider Name ="musicVolume" Value="40" Width="300" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_Volume" Margin="399,75,95,143" Height="20" Grid.Row="1">
+        <Slider Name ="musicVolume" Value="40" Width="300" Minimum="1" Maximum="100" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="Slider_Volume" Margin="404,27,90,191" Height="20" Grid.Row="1">
             <Slider.Effect>
                 <DropShadowEffect Color="#FF040404" Opacity="0"/>
             </Slider.Effect>
         </Slider>
-        <Slider Name ="musicSpeed" Value="1" Width="300" Minimum="0.25" Maximum="2.0" IsSnapToTickEnabled="True" TickFrequency="0.25" ValueChanged="Slider_Speed" Height="20" Margin="399,120,95,98" Grid.Row="1">
+        <Slider Name ="musicSpeed" Value="1" Width="300" Minimum="0.25" Maximum="2.0" IsSnapToTickEnabled="True" TickFrequency="0.25" ValueChanged="Slider_Speed" Height="20" Margin="404,72,90,146" Grid.Row="1">
             <Slider.Effect>
                 <DropShadowEffect Color="#FF040404" Opacity="0"/>
             </Slider.Effect>
         </Slider>
-        <Slider Name ="frameSpeed" Value="33.3" Width="300" Minimum="10" Maximum="120" IsSnapToTickEnabled="True" TickFrequency="0.1" ValueChanged="Slider_frameSpeed" Height="20" Margin="399,161,95,57" Grid.Row="1">
+        <Slider Name ="frameSpeed" Value="33.3" Width="300" Minimum="10" Maximum="120" IsSnapToTickEnabled="True" TickFrequency="0.1" ValueChanged="Slider_frameSpeed" Height="20" Margin="404,113,90,105" Grid.Row="1">
             <Slider.Effect>
                 <DropShadowEffect Color="#FF040404" Opacity="0"/>
             </Slider.Effect>

@@ -141,7 +141,13 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\helltaker_icon.ico" />
+    <Content Include="Resources\Music\Apropos.mp3" />
+    <Content Include="Resources\Music\Epitomize.mp3" />
+    <Content Include="Resources\Music\Luminescent.mp3" />
+    <Content Include="Resources\Music\Vitality.mp3" />
+    <Resource Include="Resources\helltaker_icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Pandemonica.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -172,28 +178,50 @@
     <Resource Include="Resources\Glorious_success_right.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\ButtonImages\azazel.png" />
-    <Resource Include="Resources\ButtonImages\cerberus.png" />
-    <Resource Include="Resources\ButtonImages\Glorious_success_left.png" />
-    <Resource Include="Resources\ButtonImages\Glorious_success_right.png" />
-    <Resource Include="Resources\ButtonImages\judgement.png" />
-    <Resource Include="Resources\ButtonImages\justice.png" />
-    <Resource Include="Resources\ButtonImages\lucifer.png" />
-    <Resource Include="Resources\ButtonImages\lucifer_apron.png" />
-    <Resource Include="Resources\ButtonImages\malina.png" />
-    <Resource Include="Resources\ButtonImages\modeus.png" />
-    <Resource Include="Resources\ButtonImages\pandemonica.png" />
-    <Resource Include="Resources\ButtonImages\zdrada.png" />
-    <Resource Include="Resources\background.jpg" />
-    <Resource Include="helltaker.ico" />
-    <Resource Include="helltaker1.ico" />
-    <Resource Include="helltaker2.ico" />
-    <Resource Include="helltaker_icon.ico" />
-    <Resource Include="Resources\Apron.png" />
-    <Resource Include="Resources\Bellzebub.png" />
-    <Content Include="Resources\Helltaker.mp3">
+    <Resource Include="Resources\ButtonImages\azazel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\cerberus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\Glorious_success_left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\Glorious_success_right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\judgement.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\justice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\lucifer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\lucifer_apron.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\malina.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\modeus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\pandemonica.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ButtonImages\zdrada.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\background.jpg" />
+    <Resource Include="helltaker_icon.ico" />
+    <Resource Include="Resources\Apron.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Bellzebub.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
